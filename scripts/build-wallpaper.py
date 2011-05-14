@@ -26,14 +26,11 @@ parser.add_option("-t", "--target", dest="target", default="background.jpg",
                    help="write background to FILE", metavar="FILE")
 parser.add_option("-c", "--crop", dest="crop", action="store_true",
                   help="crop image instead of centering them")
-#parser.add_option("-r", "--ratio", dest="ratio", action="store_true",
-#                   help="only use images with adequate ratio")
 options, args = parser.parse_args()
 
 assert not args, "No additional arguments are accepted"
 
 background = None
-ratio = "." # We don't use ratio
 
 # Get display size
 display = xcb.connect()
@@ -54,7 +51,7 @@ screens.sort(key=lambda screen: -screen[0]*screen[1])
 
 # Get as many random image as we have screens
 images = []
-for root, _, files in os.walk(os.path.join(options.directory, ratio)):
+for root, _, files in os.walk(os.path.join(options.directory)):
     for i in files:
         if string.lower(os.path.splitext(i)[1]) in ('.jpg',
                                                     '.jpeg',
@@ -63,26 +60,11 @@ for root, _, files in os.walk(os.path.join(options.directory, ratio)):
 images = random.sample(images,
                        len(screens) + \
                            random.randint(0, 3)) # Randomly favor larger images
-images = [Image.open(os.path.join(options.directory, ratio,
+images = [Image.open(os.path.join(options.directory,
                                   image)) for image in images]
 images.sort(key=lambda image: -image.size[0]*image.size[1])
 
 for index in range(len(screens)):
-    # Find the ratio of this screen
-    # if options.ratio:
-    #     ratios = [[int(i) for i in r.split(":")] for r in os.listdir(options.directory)
-    #               if os.path.isdir(os.path.join(options.directory, r)) and
-    #               re.match("\d+:\d+", r)]
-    #     ratio = None
-    #     for r in ratios:
-    #         if r[0]*y == r[1] * x:
-    #             ratio = r
-    #             break
-    #     assert ratio, "Ratio cannot be found"
-    #     ratio = "%d:%d" % (ratio[0], ratio[1])
-    # else:
-    #     ratio = "."
-
     x, y, offsetx, offsety = screens[index]
     image = images[index]
 

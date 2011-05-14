@@ -1,0 +1,31 @@
+Style rhythmbox NoIcon
+
+# ---------------------------------------------------------------------------
+# Basic control functions
+DestroyFunc Music-Play
+AddToFunc Music-Play
++ I Exec exec rhythmbox-client --play
+
+DestroyFunc Music-Pause
+AddToFunc Music-Pause
++ I Exec exec rhythmbox-client --pause
+
+DestroyFunc Music-Stop
+AddToFunc Music-Stop
++ I Exec exec rhythmbox-client --pause
+
+DestroyFunc Music-PlayPause
+AddToFunc Music-PlayPause
++ I Exec exec rhythmbox-client --play-pause
+
+DestroyFunc Music-Next
+AddToFunc Music-Next
++ I Exec exec rhythmbox-client --next
+
+DestroyFunc Music-Prev
+AddToFunc Music-Prev
++ I Exec exec rhythmbox-client --previous
+
+DestroyFunc Music-GUI
+AddToFunc Music-GUI
++ I All (rhythmbox) Iconify toggle

@@ -1,0 +1,9 @@
+# -*- fvwm -*-
+
+AddToFunc StartFunction 
++ I None (trayer) Exec exec trayer \
+--SetDockType false \
+--transparent true \
+--alpha $[TrayerAlpha] \
+--tint $[TrayerTint] \
+$[trayer-args]

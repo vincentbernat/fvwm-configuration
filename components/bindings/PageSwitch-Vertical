@@ -1,0 +1,5 @@
+Key Up		 A $[Mod2]	GotoPage-Up
+Key Down	 A $[Mod2]	GotoPage-Down
+
+Key Up		 A CS	WarpToPage-Up
+Key Down	 A CS	WarpToPage-Down

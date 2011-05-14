@@ -1,0 +1,6 @@
+# -*- fvwm -*-
+
+# Without Xinerama, we use 1/3 2/3 setup
+
+DeclareNewAppsIconMan 0 $[vp.width]/3
+DeclareNewTermsIconMan 0 $[vp.width]/3*2

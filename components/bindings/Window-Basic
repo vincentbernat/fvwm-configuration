@@ -1,0 +1,7 @@
+Mouse 1 T       $[Mod] Window-Raise-RaiseMove
+Mouse 3 T       $[Mod] Window-Shade-Resize
+
+Mouse 1 WT      $[Mod1] Window-Raise-RaiseMove
+Mouse 1 WT      $[Mod1]2 Window-Raise-RaiseMove
+Mouse 3 WT      $[Mod1] Window-Shade-Resize
+Mouse 3 WT      $[Mod1]2 Window-Shade-Resize

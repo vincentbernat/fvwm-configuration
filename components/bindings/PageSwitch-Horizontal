@@ -1,0 +1,5 @@
+Key Left	 A $[Mod2]	GotoPage-Left
+Key Right	 A $[Mod2]	GotoPage-Right
+
+Key Left	 A CS	WarpToPage-Left
+Key Right	 A CS	WarpToPage-Right

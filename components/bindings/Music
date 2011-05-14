@@ -1,0 +1,17 @@
+# Music bindings
+
+Key Z A MS         Music-Prev
+Key X A MS         Music-Play
+Key C A MS         Music-Pause
+Key V A MS         Music-Stop
+Key B A MS         Music-Next
+Key S A MS         Music-GUI
+
+Key XF86AudioPrev A A Music-Prev
+Key XF86AudioPlay A A Music-PlayPause
+Key XF86AudioStop A A Music-Stop
+Key XF86AudioNext A A Music-Next
+
+Key XF86AudioLowerVolume A A Mixer-Volume-Down 5
+Key XF86AudioRaiseVolume A A Mixer-Volume-Up   5
+Key XF86AudioMute        A A Mixer-Mute

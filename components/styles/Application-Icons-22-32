@@ -1,0 +1,8 @@
+Style Firefox-bin	MiniIcon 22x22/apps/iceweasel.png, Icon 32x32/apps/iceweasel.png
+Style VirtualBox	MiniIcon 22x22/apps/virtualbox.png, Icon 32x32/apps/virtualbox.png
+Style Wireshark		MiniIcon 22x22/apps/wireshark.png, Icon 32x32/apps/wireshark.png
+Style VLC*		MiniIcon 22x22/apps/vlc.png, Icon 32x32/apps/vlc.png
+Style rdesktop          MiniIcon 22x22/apps/win.png
+Style freerdp           MiniIcon 22x22/apps/win.png
+Style evince            MiniIcon 22x22/apps/acroread.png, Icon 32x32/apps/acroread.png, IconOverride, EWMHMiniIconOverride
+Style "TightVNC: Mac mini" MiniIcon 22x22/apps/mol.png, Icon 32x32/apps/mol.xpm

@@ -1,0 +1,12 @@
+# -*- fvwm -*-
+
+# Move focus with numpad
+Key KP_Home      A S Direction NorthWest (CurrentGlobalPage, AcceptsFocus, !Iconic) FlipFocus
+Key KP_Left      A S Direction West  (CurrentGlobalPage, AcceptsFocus, !Iconic) FlipFocus
+Key KP_End       A S Direction SouthWest (CurrentGlobalPage, AcceptsFocus, !Iconic) FlipFocus
+Key KP_Up        A S Direction North  (CurrentGlobalPage, AcceptsFocus, !Iconic) FlipFocus
+Key KP_Down      A S Direction South  (CurrentGlobalPage, AcceptsFocus, !Iconic) FlipFocus
+Key KP_Page_Up   A S Direction NorthEast (CurrentGlobalPage, AcceptsFocus, !Iconic) FlipFocus
+Key KP_Page_Down A S Direction SouthEast (CurrentGlobalPage, AcceptsFocus, !Iconic) FlipFocus
+Key KP_Right     A S Direction East  (CurrentGlobalPage, AcceptsFocus, !Iconic) FlipFocus
+Key KP_Begin     A S Direction Center (CurrentGlobalPage, AcceptsFocus, !Iconic) FlipFocus

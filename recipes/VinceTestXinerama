@@ -1,0 +1,12 @@
+# -*- fvwm -*-
+# To test Xinerama
+
+XineramaSlsSize 2x1
+XineramaSls On
+Xinerama On
+
+SetEnv Has-Xinerama 1
+SetEnv Left-Screen 0
+SetEnv Right-Screen 1
+
+Include recipes/Vince

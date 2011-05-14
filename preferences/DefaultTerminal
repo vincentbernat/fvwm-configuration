@@ -1,0 +1,1 @@
+PipeRead 'echo SetEnv DefaultTerminal \\\"urxvtcd +sb -si -sw -j -fade 40 -sh 30 -bc -tint white -fg white -sl 2000 --color4 RoyalBlue --color12 RoyalBlue -fn fixed $(if pidof xcompmgr > /dev/null; then echo -depth 32 -bg rgba:0000/0000/0000/bbbb -fadecolor rgba:0000/0000/0000/6666; else echo -tr -bg black; fi)\\\"'

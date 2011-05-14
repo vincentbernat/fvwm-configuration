@@ -1,0 +1,22 @@
+# -*- fvwm -*-
+
+Echo "No Xinerama Setup"
+
+*FvwmIconMan-Icons: ManagerGeometry 6x0-3+3
+
+*ApplicationPanel: Rows 1
+*ApplicationPanel: Geometry +3+3
+
+SetEnv Desk-Pages-X "1"
+SetEnv Desk-Pages-Y "6"
+
+PipeRead 'echo SetEnv FvwmPager-Width $((37*$[Desk-Pages-X]))'
+PipeRead 'echo SetEnv FvwmPager-Height $((28*$[Desk-Pages-Y]))'
+PipeRead 'echo *FvwmPager: Geometry $[FvwmPager-Width]x$[FvwmPager-Height]-3+30
+PipeRead 'echo DesktopSize $[Desk-Pages-X]x$[Desk-Pages-Y]'
+
+DestroyFunc IncludeXinerama
+AddToFunc IncludeXinerama
+ + I Include $[0]-NoXinerama
+
+SetEnv trayer-args "--edge top --margin 150 --distance 3 --widthtype request --heighttype pixel --height 24 --align right"

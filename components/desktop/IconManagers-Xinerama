@@ -1,0 +1,26 @@
+# -*- fvwm -*-
+
+# With Xinerama, we use one per screen
+
+DestroyFunc IconManagersOnBothScreens
+AddToFunc IconManagersOnBothScreens
++ I SetEnv iconman-both 1
++ I DeclareNewAppsIconMan $[Right-Screen] $[Right-Screen-x]
++ I DeclareNewTermsIconMan $[Left-Screen] $[Left-Screen-x]
+
+DestroyFunc IconManagersOnRightScreen
+AddToFunc IconManagersOnRightScreen
++ I SetEnv iconman-both 0
++ I DeclareNewAppsIconMan $[Right-Screen] $[Right-Screen-x]/3
++ I DeclareNewTermsIconMan $[Right-Screen] $[Right-Screen-x]/3*2
+
+DestroyFunc ToggleIconManagers
+AddToFunc ToggleIconManagers
++ I Test (EnvMatch iconman-both 1) IconManagersOnRightScreen
++ I TestRc (NoMatch) IconManagersOnBothScreens
+
+Mouse (FvwmIconMan-Apps) 1 W M ToggleIconManagers
+Mouse (FvwmIconMan-Terms) 1 W M ToggleIconManagers
+
+# By default, on both screens
+IconManagersOnBothScreens

@@ -1,0 +1,20 @@
+# -*- fvwm -*-
+
+Style tvtime Sticky,UsePPosition,!Title,StartsOnScreen $[Left-Screen]
+Style emacs !UsePPosition,!UseUSPosition
+
+# VLC
+Style VLC* !UsePPosition, !UseUSPosition,!Title,StartsOnScreen $[Left-Screen]
+Style "VLC (XVideo output)" !Borders,Sticky
+
+# Mplayer
+Style MPlayer Sticky
+
+# GQview
+Style fullscreen !Borders,!Title,Sticky
+
+# VNC
+Style "TightVNC: Mac mini" !Borders,!Title
+
+# Conky
+Style "Conky" !Borders,!Title,Sticky,StartsOnScreen $[Left-Screen],UseUSPosition

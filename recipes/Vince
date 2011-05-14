@@ -1,0 +1,194 @@
+# -*- fvwm -*-
+
+# Ignore VerrNum
+IgnoreModifiers L25
+
+SetEnv Icon-Theme "Default"
+ImagePath $[FVWM_USERDIR]/icons/$[Icon-Theme]:$[FVWM_SYSTEMDIR]/icons/$[Icon-Theme]
+
+# Cleanup
+Exec exec find $[FVWM_USERDIR] -name '*~' -print0 | xargs -0r rm
+
+Module FvwmCommandS
+
+# Setup Xinerama
+DestroyFunc SetupXinerama
+AddToFunc SetupXinerama
++ I PipeRead '$[FVWM_USERDIR]/scripts/xinerama.sh'
++ I Test (EnvMatch Has-Xinerama 1) Include recipes/VinceXinerama
++ I TestRc (NoMatch) Include recipes/VinceNoXinerama
+
+# Destroy everything !
+All (ApplicationPanel) Close
+DestroyModuleConfig ApplicationPanel: *
+All (FvwmPager) Close
+DestroyModuleConfig FvwmPager: *
+All (FvwmIconMan-Icons) Close
+DestroyModuleConfig FvwmIconMan-Icons: 
+
+SetupXinerama
+
+# Default FVWM-Crystal functions, initialization {{{2
+Include components/functions/Colorsets
+Include components/functions/Window-Basic
+Include components/functions/Window-Focus
+Include components/functions/Window-SetPlacementPolicy
+Include components/functions/Window-Decorations
+Include components/functions/Window-Buttons
+Include components/functions/Window-Rearrange
+Include components/functions/Window-List
+Include components/functions/Menu-Position
+Include components/functions/EWMH-BaseStruts
+Include components/functions/Desktop-Pager
+Include components/functions/Fullscreen
+Include components/functions/Wallpaper
+Include components/functions/Urgency-Hint
+Include components/functions/Clear-FVWM-Settings
+Include components/styles/FocusPolicy-FVWM-Crystal
+
+LoadPreferences PrivilegedTerminals
+LoadPreferences DefaultMusicPlayer
+LoadPreferences LastChoosenColorset
+LoadPreferences LastChoosenWindowDecoration
+# Change actions of maximize button...
+Mouse 1 4 $[Mod0] Window-Button-Function Button4 /Window-Menu-Maximize Maximize grow grow
+Mouse 2 4 $[Mod0] Window-Button-Function Button4 /Window-Menu-Maximize Maximize 0 grow
+Mouse 3 4 $[Mod0] Window-Button-Function Button4 /Window-Menu-Maximize Maximize grow 0
+# Remove unused buttons
+Style * NoButton 6
+Style * NoButton 8
+
+# Misc settings
+Style * Font "xft:Comic Sans MS:style=Bold:pixelsize=13"
+Style * EWMHNoMiniIconOverride, NoIconOverride
+SnapAttraction  3       All
+
+Append preferences/Startup
+
+# Preferred applications {{{2
+Include components/functions/Screenshot-import
+Include components/apps/FvwmMiniConsole
+Include components/apps/QuakeConsole
+
+# Desktop & window bindings {{{2
+Include components/bindings/Desktop-RMB-OpenTerminal
+Include components/bindings/Desktop-MMB-TogglePanels
+Include components/bindings/Window-Basic
+Include components/bindings/Numpad-Focus
+Include components/bindings/Music
+Include components/desktop/Keyboard
+
+# Various styles {{{2
+Include components/desktop/FVWM-Crystal_Styles
+Style * EWMHPlacementUseDynamicWorkingArea
+
+# Desktop settings {{{1
+EdgeScroll	0	0
+EdgeResistance	0	100
+HideGeometryWindow 	Move, Resize
+OpaqueMoveSize	100
+EdgeThickness	1
+
+EWMH-Desktop 3 3 3 3
+# EWMH-Panel-Bottom 30
+# EWMH-Panel-Top 30
+
+# Applications panel and menu generator {{{1
+*ApplicationPanel: BoxSize smart
+*ApplicationPanel: ActiveColorset $[cs-panel-active]
+*ApplicationPanel: Colorset $[cs-panel-inactive]
+*ApplicationPanel: Padding 1 1
+*ApplicationPanel: Frame 0
+
+DestroyFunc AddToApplicationPanel
+AddToFunc AddToApplicationPanel
++ I Test (X $[1]) *ApplicationPanel: (1x1, Size 22 22, \
+        Icon "22x22/apps/$[0].png", \
+        Action (Mouse 0) Exec exec $[1-])
+
+AddToApplicationPanel iceweasel iceweasel
+AddToApplicationPanel gaim pidgin
+AddToApplicationPanel skype skype
+AddToApplicationPanel emacs emacs
+AddToApplicationPanel virtualbox virtualbox
+AddToApplicationPanel tvtime tvtime -g +0+0 -m
+AddToApplicationPanel gimp gimp
+AddToApplicationPanel pavucontrol pavucontrol
+
+Module FvwmButtons ApplicationPanel
+
+# Pager {{{1
+
+*FvwmPager: MiniIcons
+*FvwmPager: Font none
+*FvwmPager: WindowBorderWidth 1
+*FvwmPager: Window3DBorders
+*FvwmPager: UseSkipList
+*FvwmPager: Colorset * $[cs-panel-inactive]
+*FvwmPager: HilightColorset * $[cs-panel-active]
+*FvwmPager: WindowColorsets $[cs-panel-wininactive] $[cs-panel-winactive]
+*FvwmPager: Balloons pager
+*FvwmPager: BalloonFont "xft:Verdana:pixelsize=10"
+*FvwmPager: BalloonColorset * $[cs-panel-inactive]
+
+Module FvwmPager
+
+# Icons panel {{{1
+
+*FvwmIconMan-Icons: Resolution Global
+*FvwmIconMan-Icons: UseWinList True
+*FvwmIconMan-Icons: DontShow Class=xmms,FvwmButtons,FvwmIconMan,FvwmPager,FvwmIdent,FvwmForm
+*FvwmIconMan-Icons: ShowOnlyIcons True
+*FvwmIconMan-Icons: DrawIcons True
+*FvwmIconMan-Icons: Sort Id
+*FvwmIconMan-Icons: FollowFocus True
+*FvwmIconMan-Icons: Format ""
+*FvwmIconMan-Icons: Title ""
+*FvwmIconMan-Icons: ButtonGeometry 24x24
+*FvwmIconMan-Icons: Font ""
+# Tips settings {{{2
+*FvwmIconMan-Icons: Tips always
+*FvwmIconMan-Icons: TipsDelays 200 100
+*FvwmIconMan-Icons: TipsFormat "%t"
+*FvwmIconMan-Icons: TipsFont "xft:Verdana:pixelsize=12"
+*FvwmIconMan-Icons: TipsBorderWidth 0
+*FvwmIconMan-Icons: TipsColorset $[cs-panel-inactive]
+*FvwmIconMan-Icons: TipsJustification leftup
+# Button look {{{2
+*FvwmIconMan-Icons: PlainButton flat
+*FvwmIconMan-Icons: FocusButton flat
+*FvwmIconMan-Icons: SelectButton flat
+*FvwmIconMan-Icons: FocusAndSelectButton flat
+*FvwmIconMan-Icons: IconButton flat
+# Colorsets {{{2
+*FvwmIconMan-Icons: Colorset $[cs-panel-inactive]
+*FvwmIconMan-Icons: PlainColorset $[cs-panel-wininactive]
+*FvwmIconMan-Icons: FocusColorset $[cs-panel-winactive]
+*FvwmIconMan-Icons: SelectColorset $[cs-panel-active]
+*FvwmIconMan-Icons: FocusAndSelectColorset $[cs-panel-active]
+*FvwmIconMan-Icons: IconColorset $[cs-panel-inactive]
+# Actions {{{2
+*FvwmIconMan-Icons: Action Mouse 1 $[Mod] SendCommand "Function Window-Focus-CurrentDesk-Raised"
+*FvwmIconMan-Icons: Action Mouse 2 $[Mod2] SendCommand "Close"
+*FvwmIconMan-Icons: Action Mouse 2 $[Mod0] SendCommand "Nop"
+*FvwmIconMan-Icons: Action Mouse 3 $[Mod] SendCommand "Function Window-Focus-DefaultDesk-Raised"
+# }}}2
+
+Module FvwmIconMan FvwmIconMan-Icons
+Style * NoIcon
+
+Include components/desktop/IconManagers
+
+# Settings for FvwmIdent {{{1
+*FvwmIdent: Font "xft:Tahoma:pixelsize=12:Bold"
+*FvwmIdent: Colorset $[cs-panel-active]
+
+# Settings for FvwmForm {{{1
+*FvwmFormDefault: Colorset $[cs-panel-inactive]
+*FvwmFormDefault: ItemColorset $[cs-panel-active]
+*FvwmFormDefault: Font "xft:Tahoma:pixelsize=13"
+*FvwmFormDefault: InputFont "xft:Monospace:pixelsize=13"
+*FvwmFormDefault: ButtonFont "xft:Tahoma:pixelsize=13:Bold"
+*FvwmFormDefault: TimeoutFont "xft:Tahoma:pixelsize=13:Bold"
+
+IncludeXinerama preferences/EndConfiguration

@@ -1,0 +1,20 @@
+# -*- fvwm -*-
+
+# Supersedes Wallpaper-Set to call a random one
+DestroyFunc Wallpaper-Set
+AddToFunc Wallpaper-Set
++ I Exec $[FVWM_USERDIR]/scripts/build-wallpaper.py \
+                    --crop \
+                    --directory $[FVWM_USERDIR]/wallpapers \
+                    --target $[FVWM_USERDIR]/.current-wallpaper.png ; \
+         fvwm-root -r $[FVWM_USERDIR]/.current-wallpaper.png ; \
+         rm $[FVWM_USERDIR]/.current-wallpaper.png
+
+DestroyFunc RescheduleRandomWallPaper
+AddToFunc RescheduleRandomWallPaper
++ I Wallpaper-Set
++ I Deschedule 35
++ I Schedule Periodic 4000000 35 RescheduleRandomWallPaper
+
+Mouse 1 R M RescheduleRandomWallPaper
+RescheduleRandomWallPaper

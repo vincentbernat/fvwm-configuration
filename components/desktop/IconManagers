@@ -1,0 +1,61 @@
+# -*- fvwm -*-
+
+DestroyFunc DeclareNewIconMan
+AddToFunc DeclareNewIconMan
++ I All (FvwmIconMan-$[0]) Close
++ I DestroyModuleConfig FvwmIconMan-$[0]: *
++ I *FvwmIconMan-$[0]: Resolution Global
++ I *FvwmIconMan-$[0]: UseWinList True
++ I *FvwmIconMan-$[0]: ShowNoIcons True
++ I *FvwmIconMan-$[0]: DrawIcons Always
++ I *FvwmIconMan-$[0]: Sort Id
++ I *FvwmIconMan-$[0]: FollowFocus True
++ I *FvwmIconMan-$[0]: Format "%t"
++ I *FvwmIconMan-$[0]: Title ""
+# Tips {{{2
++ I *FvwmIconMan-$[0]: TipsFormat "%t"
++ I *FvwmIconMan-$[0]: Font "xft:Verdana:pixelsize=10:Bold"
++ I *FvwmIconMan-$[0]: Tips needed
++ I *FvwmIconMan-$[0]: TipsDelays 500 200
++ I *FvwmIconMan-$[0]: TipsFont "xft:Verdana:pixelsize=11"
++ I *FvwmIconMan-$[0]: TipsBorderWidth 0
++ I *FvwmIconMan-$[0]: TipsColorset $[cs-panel-inactive]
++ I *FvwmIconMan-$[0]: TipsJustification leftup
+# Button look {{{2
++ I *FvwmIconMan-$[0]: PlainButton flat
++ I *FvwmIconMan-$[0]: FocusButton flat
++ I *FvwmIconMan-$[0]: SelectButton flat
++ I *FvwmIconMan-$[0]: FocusAndSelectButton flat
++ I *FvwmIconMan-$[0]: IconButton flat
+# Colorsets {{{2
++ I *FvwmIconMan-$[0]: Colorset $[cs-panel-inactive]
++ I *FvwmIconMan-$[0]: PlainColorset $[cs-panel-wininactive]
++ I *FvwmIconMan-$[0]: FocusColorset $[cs-panel-winactive]
++ I *FvwmIconMan-$[0]: SelectColorset $[cs-panel-active]
++ I *FvwmIconMan-$[0]: FocusAndSelectColorset $[cs-panel-active]
++ I *FvwmIconMan-$[0]: IconColorset $[cs-panel-inactive]
+# Actions {{{2
++ I *FvwmIconMan-$[0]: Action Mouse 1 A SendCommand "Function Window-Focus-DefaultDesk-Raised"
++ I *FvwmIconMan-$[0]: Action Mouse 2 $[Mod2] SendCommand "Close"
++ I *FvwmIconMan-$[0]: Action Mouse 2 $[Mod0] SendCommand "Window-Iconify"
++ I *FvwmIconMan-$[0]: Action Mouse 3 $[Mod] SendCommand "Function Window-Focus-CurrentDesk-Raised"
+# }}}2
+
+DestroyFunc DeclareNewAppsIconMan
+AddToFunc DeclareNewAppsIconMan
++ I DeclareNewIconMan Apps
++ I *FvwmIconMan-Apps: ManagerGeometry 1x1+3-3@$[0]
++ I *FvwmIconMan-Apps: DontShow Class=xmms,XTerm,Eterm,xfce4-terminal,konsole,gnome-terminal,Multi-gnome-terminal,urxvt,FvwmButtons,FvwmIconMan,FvwmPager,FvwmIdent,FvwmForm,title="VLC (XVideo output)",class=tvtime
++ I PipeRead "echo *FvwmIconMan-Apps: ButtonGeometry $(($[1]-6))x24"
++ I Module FvwmIconMan FvwmIconMan-Apps
+
+DestroyFunc DeclareNewTermsIconMan
+AddToFunc DeclareNewTermsIconMan
++ I DeclareNewIconMan Terms
++ I *FvwmIconMan-Terms: ManagerGeometry 1x1-3-3@$[0]
++ I *FvwmIconMan-Terms: DontShow Class=xmms,FvwmButtons,FvwmIconMan,FvwmPager,FvwmIdent,FvwmForm
++ I *FvwmIconMan-Terms: Show Class=XTerm,Eterm,xfce4-terminal,konsole,gnome-terminal,Multi-gnome-terminal,urxvt
++ I PipeRead "echo *FvwmIconMan-Terms: ButtonGeometry $(($[1]-6))x24"
++ I Module FvwmIconMan FvwmIconMan-Terms
+
+IncludeXinerama components/desktop/IconManagers

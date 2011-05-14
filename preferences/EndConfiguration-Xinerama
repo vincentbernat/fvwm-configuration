@@ -1,0 +1,18 @@
+# -*- fvwm -*-
+
+# Display Quake console on the correct screen
+
+DestroyFunc QuakeConsole_Move
+AddToFunc QuakeConsole_Move
++ I Style QuakeConsoleNeedsUniqueName VariablePosition
++ I UpdateStyles
++ I All (QuakeConsoleNeedsUniqueName) Move $[0]p 0
++ I Style QuakeConsoleNeedsUniqueName FixedPosition
+
+AddToFunc QuakeConsole_Show
++ I PipeRead 'if [ $[pointer.x] -lt $(($[vp.width]/2)) ]; then \
+                 echo QuakeConsole_Move 0; else \
+                 echo QuakeConsole_Move $(($[vp.width]/2)); \
+              fi'
+
+AddToFunc QuakeConsole_Init

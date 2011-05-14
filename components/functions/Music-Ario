@@ -1,0 +1,6 @@
+-*- fvwm -*-
+
+DestroyFunc Music-GUI
+AddToFunc Music-GUI
++ I All (ario) Close
++ I TestRc (NoMatch) None (ario) X ario

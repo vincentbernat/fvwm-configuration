@@ -1,0 +1,27 @@
+# -*- fvwm -*-
+# Xinerama specific stuff
+
+Echo "Xinerama Setup"
+
+XineramaPrimaryScreen $[Right-Screen]
+
+*FvwmIconMan-Icons: ManagerGeometry 0x6+3+30@$[Right-Screen]
+
+# Application panel
+*ApplicationPanel: Geometry +3+178@$[Right-Screen]
+*ApplicationPanel: Columns 1
+
+SetEnv Desk-Pages-X "1"
+SetEnv Desk-Pages-Y "6"
+
+PipeRead 'echo SetEnv FvwmPager-Width $((40*$[Desk-Pages-X]*2))'
+PipeRead 'echo SetEnv FvwmPager-Height $((26*$[Desk-Pages-Y]))'
+PipeRead 'echo *FvwmPager: Geometry $[FvwmPager-Width]x$[FvwmPager-Height]+$((($[Left-Screen-x]-1-$[FvwmPager-Width]*$[Left-Screen-x]/($[Left-Screen-x]+$[Right-Screen-x]))))+$((($[vp.height]-$[FvwmPager-Height])/2+50))@$[Left-Screen]'
+PipeRead 'echo DesktopSize $[Desk-Pages-X]x$[Desk-Pages-Y]'
+
+DestroyFunc IncludeXinerama
+AddToFunc IncludeXinerama
+ + I Include $[0]-Xinerama
+
+# Trayer arguments
+SetEnv trayer-args "--edge top --margin 3 --distance 3 --widthtype request --heighttype pixel --height 24 --align left --monitor 1"

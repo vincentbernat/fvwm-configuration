@@ -1,0 +1,35 @@
+# Styles for Audacious windows
+Style Audacious		StaysOnTop
+Style player		StartIconic, NoIcon, NoTitle, Sticky, WindowListSkip
+Style playlist		StartIconic, NoIcon, NoTitle, Sticky, WindowListSkip
+Style equalizer		StartIconic, NoIcon, NoTitle, Sticky, WindowListSkip
+
+# ---------------------------------------------------------------------------
+# Basic control functions
+DestroyFunc Music-Play
+AddToFunc Music-Play
++ I Exec exec audtool playback-play
+
+DestroyFunc Music-Pause
+AddToFunc Music-Pause
++ I Exec exec audtool playback-pause
+
+DestroyFunc Music-Stop
+AddToFunc Music-Stop
++ I Exec exec audtool playback-stop
+
+DestroyFunc Music-PlayPause
+AddToFunc Music-PlayPause
++ I Exec exec audacious -t
+
+DestroyFunc Music-Next
+AddToFunc Music-Next
++ I Exec exec audtool playlist-advance
+
+DestroyFunc Music-Prev
+AddToFunc Music-Prev
++ I Exec exec audtool playlist-reverse
+
+DestroyFunc Music-GUI
+AddToFunc Music-GUI
++ I All (player) Iconify toggle

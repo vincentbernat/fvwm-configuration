@@ -1,13 +1,7 @@
 # -*- fvwm -*-
 
-FindCommand MusicPlayer mpd audacious
-PipeRead '[ X$[MPD_HOST] != X ] && echo SetEnv MusicPlayer mpd'
-Include components/functions/Music-$[MusicPlayer]
-Include components/functions/Mixer-aumix
+Include components/functions/Mixer-amixer
 
 DestroyFunc Mixer-Mute
 AddToFunc Mixer-Mute
-+ I Exec exec aumix -vn
-
-# Redefine mpd Music-GUI
-PipeRead '[ X$[MusicPlayer] = Xmpd ] && echo Include components/functions/Music-Ario'
++ I Exec exec amixer set 'Master' toggle > /dev/null

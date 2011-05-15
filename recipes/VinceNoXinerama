@@ -19,4 +19,4 @@ DestroyFunc IncludeXinerama
 AddToFunc IncludeXinerama
  + I Include $[0]-NoXinerama
 
-SetEnv trayer-args "--edge top --margin 150 --distance 3 --widthtype request --heighttype pixel --height 24 --align right"
+SetEnv trayer-args "--edge top --margin 152 --distance 3 --widthtype request --heighttype pixel --height 24 --align right"

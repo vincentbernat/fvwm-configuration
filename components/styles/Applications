@@ -18,3 +18,6 @@ Style "TightVNC: Mac mini" !Borders,!Title
 
 # Conky
 Style "Conky" !Borders,!Title,Sticky,StartsOnScreen $[Left-Screen],UseUSPosition
+
+# Chromium
+Style "Chromium" !Borders,!Title

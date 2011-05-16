@@ -107,11 +107,10 @@ AddToFunc AddToApplicationPanel
         Action (Mouse 0) Exec exec $[1-])
 
 AddToApplicationPanel iceweasel iceweasel
+AddToApplicationPanel chromium chromium
 AddToApplicationPanel gaim pidgin
-AddToApplicationPanel skype skype
 AddToApplicationPanel emacs emacs
 AddToApplicationPanel virtualbox virtualbox
-AddToApplicationPanel tvtime tvtime -g +0+0 -m
 AddToApplicationPanel gimp gimp
 AddToApplicationPanel pavucontrol pavucontrol
 

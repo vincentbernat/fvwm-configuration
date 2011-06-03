@@ -10,6 +10,5 @@ Key semicolon A $[Mod1] FvwmMiniConsole
 # Screenshot
 Key Print A $[Mod] Screenshot
 
-# XLock
-Key XF86ScreenSaver A A Exec exec xautolock -locknow
-Key XF86Sleep A A Exec exec xautolock -locknow
+# Lock screen
+Key XF86ScreenSaver A A Exec exec gnome-screensaver-command -l

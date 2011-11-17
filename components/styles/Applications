@@ -18,6 +18,10 @@ Style "TightVNC: Mac mini" !Borders,!Title
 
 # Conky
 Style "Conky" !Borders,!Title,Sticky,StartsOnScreen $[Left-Screen],UseUSPosition
+AddToFunc Interface_Show
++ I All (Conky) Iconify false
+AddToFunc Interface_Hide
++ I All (Conky) Iconify true
 
 # Chromium
 #Style "Chromium" !Borders,!Title

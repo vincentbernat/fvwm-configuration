@@ -61,7 +61,7 @@ Style * NoButton 8
 # Misc settings
 Style * Font "xft:Comic Sans MS:style=Bold:pixelsize=13"
 Style * EWMHNoMiniIconOverride, NoIconOverride
-SnapAttraction  3       All
+Style * SnapAttraction 3 All
 
 Append preferences/Startup
 

@@ -76,6 +76,7 @@ Include components/bindings/Desktop-MMB-TogglePanels
 Include components/bindings/Window-Basic
 Include components/bindings/Numpad-Focus
 Include components/bindings/Music
+Include components/bindings/Display
 Include components/desktop/Keyboard
 
 # Various styles {{{2

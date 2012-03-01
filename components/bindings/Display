@@ -1,0 +1,9 @@
+# -*- fvwm -*-
+# Handle XF86Display
+
+DestroyFunc ChangeDisplaySetup
+AddToFunc ChangeDisplaySetup
+ + I Exec $[FVWM_USERDIR]/scripts/xrandr-auto.sh
+ + I Restart
+
+Key XF86Display A N ChangeDisplaySetup

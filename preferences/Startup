@@ -9,4 +9,4 @@ AddToFunc StartFunction
 $[trayer-args]
 
 AddToFunc RestartFunction
-+ I All (trayer) Close
++ I All (trayer) Destroy

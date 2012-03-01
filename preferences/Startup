@@ -7,3 +7,6 @@ AddToFunc StartFunction
 --alpha $[TrayerAlpha] \
 --tint $[TrayerTint] \
 $[trayer-args]
+
+AddToFunc RestartFunction
++ I All (trayer) Close

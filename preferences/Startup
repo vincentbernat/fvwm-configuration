@@ -1,12 +1,10 @@
 # -*- fvwm -*-
 
 AddToFunc StartFunction 
++ I All (trayer) Destroy
 + I None (trayer) Exec exec trayer \
 --SetDockType false \
 --transparent true \
 --alpha $[TrayerAlpha] \
 --tint $[TrayerTint] \
 $[trayer-args]
-
-AddToFunc RestartFunction
-+ I All (trayer) Destroy

@@ -55,6 +55,9 @@ EOF
     dconf write /org/gnome/desktop/interface/gtk-key-theme "'Emacs'"
     dconf write /org/gnome/desktop/interface/gtk-theme "'Hope'"
     dconf write /org/gnome/desktop/interface/cursor-theme "'oxy-cherry'"
+    dconf write /org/gnome/desktop/interface/buttons-have-icons true
+    dconf write /org/gnome/desktop/interface/can-change-accels true
+    dconf write /org/gnome/desktop/interface/menus-have-icons true
 }
 
 /usr/lib/gnome-settings-daemon/gnome-settings-daemon &

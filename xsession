@@ -124,8 +124,8 @@ esac
 # Run FVWM. Restart does not seem to work as expected when running in
 # gnome-session. Just emulate it.
 while true; do
-  fvwm -f /usr/share/fvwm-crystal/fvwm/config
   sleep 1
+  fvwm -f /usr/share/fvwm-crystal/fvwm/config
   [ -f ~/.fvwm/.fs-restart-$HOSTDISPLAY ] || break
 done
 

@@ -47,7 +47,6 @@ Include components/functions/Clear-FVWM-Settings
 Include components/styles/FocusPolicy-FVWM-Crystal
 
 LoadPreferences PrivilegedTerminals
-LoadPreferences DefaultMusicPlayer
 LoadPreferences LastChoosenColorset
 LoadPreferences LastChoosenWindowDecoration
 # Change actions of maximize button...
@@ -75,7 +74,6 @@ Include components/bindings/Desktop-RMB-OpenTerminal
 Include components/bindings/Desktop-MMB-TogglePanels
 Include components/bindings/Window-Basic
 Include components/bindings/Numpad-Focus
-Include components/bindings/Music
 Include components/bindings/Display
 Include components/desktop/Keyboard
 

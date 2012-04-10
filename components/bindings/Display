@@ -7,4 +7,3 @@ AddToFunc ChangeDisplaySetup
  + I Restart
 
 Key XF86Display A N ChangeDisplaySetup
-Schedule 5000 Key XF86Display A N ChangeDisplaySetup

@@ -53,7 +53,7 @@ EOF
     dconf write /org/gnome/settings-daemon/plugins/xsettings/antialiasing "'rgba'"
     dconf write /org/gnome/desktop/interface/font-name "'Cantarell 10'"
     dconf write /org/gnome/desktop/interface/gtk-key-theme "'Emacs'"
-    dconf write /org/gnome/desktop/interface/gtk-theme "'Hope'"
+    dconf write /org/gnome/desktop/interface/gtk-theme "'Adwaita Cupertino L'"
     dconf write /org/gnome/desktop/interface/cursor-theme "'oxy-cherry'"
     dconf write /org/gnome/desktop/interface/buttons-have-icons true
     dconf write /org/gnome/desktop/interface/can-change-accels true

@@ -28,6 +28,22 @@ EOF
     export XAUTHORITY=$HOME/.Xauthority
 }
 
+# Setup xrandr
+case "$HOSTDISPLAY" in
+  neo:*)
+    xrandr --output  VGA-0 --auto --output DVI-0 --auto --right-of VGA-0
+    ;;
+  guybrush:*)
+    ~/.fvwm/scripts/xrandr-auto.sh
+    ;;
+  naruto:*)
+    xrandr --output VGA1 --auto --output DVI1 --auto --left-of VGA1
+    ;;
+esac
+
+# Run the remaining of the start in the background
+(
+
 # Run a composition manager if available
 [ -x /usr/bin/xcompmgr ] && xcompmgr &
 
@@ -60,6 +76,7 @@ EOF
     dconf write /org/gnome/desktop/interface/menus-have-icons true
 }
 
+sleep 1
 /usr/lib/gnome-settings-daemon/gnome-settings-daemon &
 /usr/lib/notification-daemon/notification-daemon &
 /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
@@ -73,13 +90,11 @@ case "$HOSTDISPLAY" in
     xset m 3 3
     setxkbmap us "" compose:rwin
     xmodmap -e "keysym Pause = XF86ScreenSaver"
-    xrandr --output  VGA-0 --auto --output DVI-0 --auto --right-of VGA-0
     transmission-gtk &
     keepassx &
     pidgin &
     ;;
   guybrush:*)
-    ~/.fvwm/scripts/xrandr-auto.sh
     setxkbmap us "" compose:ralt
     xmodmap -e "keysym XF86AudioPlay = XF86ScreenSaver"
   # Wheel emulation using third button
@@ -100,7 +115,6 @@ case "$HOSTDISPLAY" in
     xset m 4 3
     setxkbmap us "" compose:rwin
     xmodmap -e "keysym Pause = XF86ScreenSaver"
-    xrandr --output VGA1 --auto --output DVI1 --auto --left-of VGA1
     ;;
 esac
 
@@ -118,10 +132,12 @@ case "$HOSTDISPLAY" in
     ;;
 esac
 
+exit 0
+) &
+
 # Run FVWM. Restart does not seem to work as expected when running in
 # gnome-session. Just emulate it.
 while true; do
-  sleep 1
   fvwm -f /usr/share/fvwm-crystal/fvwm/config
   [ -f ~/.fvwm/.fs-restart-$HOSTDISPLAY ] || break
 done

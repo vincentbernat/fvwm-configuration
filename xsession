@@ -104,9 +104,6 @@ case "$HOSTDISPLAY" in
     ;;
 esac
 
-# Fix a X vulnerability
-xmodmap -e 'keysym 0x1008fe21 = KP_Multiply'
-
 xset r
 xset -b
 

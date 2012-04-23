@@ -31,7 +31,7 @@ EOF
 # Setup xrandr
 case "$HOSTDISPLAY" in
   neo:*)
-    xrandr --output  VGA-0 --auto --output DVI-0 --auto --right-of VGA-0
+    xrandr --output HDMI-0 --auto --output DVI-0 --auto --right-of HDMI-0
     ;;
   guybrush:*)
     ~/.fvwm/scripts/xrandr-auto.sh

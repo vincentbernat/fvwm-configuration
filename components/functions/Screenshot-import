@@ -1,0 +1,14 @@
+# Screenshot - using import from ImageMagick
+
+DestroyFunc Screenshot
+AddToFunc Screenshot
++ I Exec exec mkdir -p $[FVWM_USERDIR]/screenshots
++ I Exec exec import -window root -quality 100 $[FVWM_USERDIR]/screenshots/screenshot-`date +%Y%m%d_%H:%M:%S`.png
+
+DestroyFunc Screenshot-Frame
+AddToFunc Screenshot-Frame
++ I Exec exec mkdir -p $[FVWM_USERDIR]/screenshots
++ I ThisWindow (!Shaded, !Iconic, Iconifiable) \
+    	 Exec exec import -frame -window $[w.id] -quality 100 $[FVWM_USERDIR]/screenshots/screenshot-`date +%Y%m%d_%H:%M:%S`.png
+
+Key Print A $[Mod1] Screenshot-Frame

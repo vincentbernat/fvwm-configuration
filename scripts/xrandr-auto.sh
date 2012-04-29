@@ -35,3 +35,6 @@ done
 
 # Call xrandr
 xrandr $ARGS
+
+# Ask to restart FVWM
+echo "Restart"

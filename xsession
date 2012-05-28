@@ -89,14 +89,14 @@ bluetooth-applet &
 case "$HOSTDISPLAY" in
   neo:*)
     xset m 3 3
-    setxkbmap us "" compose:rwin
+    setxkbmap us "" compose:rwin ctrl:nocaps
     xmodmap -e "keysym Pause = XF86ScreenSaver"
     transmission-gtk &
     keepassx &
     pidgin &
     ;;
   guybrush:*)
-    setxkbmap us "" compose:ralt
+    setxkbmap us "" compose:rctrl ctrl:nocaps
     xmodmap -e "keysym XF86AudioPlay = XF86ScreenSaver"
   # Wheel emulation using third button
     xinput set-int-prop "TPPS/2 IBM TrackPoint" \
@@ -114,7 +114,7 @@ case "$HOSTDISPLAY" in
     ;;
   naruto:*)
     xset m 4 3
-    setxkbmap us "" compose:rwin
+    setxkbmap us "" compose:rwin ctrl:nocaps
     xmodmap -e "keysym Pause = XF86ScreenSaver"
     ;;
 esac
